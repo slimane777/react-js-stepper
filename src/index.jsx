@@ -16,9 +16,10 @@ export default class Stepper extends React.Component {
                     {steps.map((step, index) => {
                         return(
                             <React.Fragment key={index}>
-                                <div className="stepper-item">
+                                <div className={`stepper-item ${activeStep === index + 1 ? 'item-active' : index + 1 < activeStep ? 'item-completed' : 'item-future'}`}>
                                     <div className="stepper-item-outer" onClick={onSelect.bind(null,index+1)}>
                                         <div className={`stepper-item-inner ${activeStep === (index+1) ? 'stepper-item-inner-active' : (index + 1) < activeStep ? 'stepper-item-inner-completed' : 'stepper-item-inner-future'}`}>  {showNumber && index + 1} </div>
+                                        <img className="stepper-img " src={${activeStep === index + 1 ? '/assets/images/active.svg' : '/assets/images/completed.svg'}} />
                                     </div>
                                     <span className={`stepper-title ${activeStep === (index+1) ? 'stepper-title-active' : ''}`}> {step.title} </span>
                                 </div>
